@@ -1,15 +1,10 @@
 import express, { request, response } from 'express';
-
+import { categoriesRoutes } from './routes/categories.routes';
 const app = express();
 app.get("/", (request, response) => {
     return response.json({ message: "Seja bem vindo" });
-}); 
+});
 app.use(express.json())
-;app.post("/courses", (request, response) => {
-  
-    const {name } = request.body;
+app.use("/categories", categoriesRoutes);
 
-    return response.json({name});
-})
-
-app.listen(3333, () => console.log("server is running!"));  
+app.listen(3333, () => console.log("server is running!"));
